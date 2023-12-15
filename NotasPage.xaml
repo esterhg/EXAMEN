@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExamenMovil.NotasPage"
+             Title="NotasPage">
+    <ScrollView>
+        <VerticalStackLayout Padding="15">
+          
+            <Image x:Name="imgFoto" WidthRequest="200" HeightRequest="200" />
+            <Button Text="Tomar Foto" Clicked="TomarFoto_Clicked" BackgroundColor="#4E944F" CornerRadius="10" TextColor="White" WidthRequest="200" HeightRequest="50" />
+            <Label Text="Titulo" FontSize="15" />
+            <Entry Placeholder="Ingrese un Titulo" x:Name="Titulo" FontSize="15" Margin="0,0,0,10" Text="" />
+            <Label Text="Descripcion" FontSize="15" />
+            <Entry Placeholder="Ingrese la descripción...." x:Name="Descripcion" FontSize="15" Margin="0,0,0,10" Text="" />
+            <Label Text="Fecha actual:" FontSize="15" />
+            <DatePicker x:Name="fechaPicker" />
+            <Button Text="Grabar" Clicked="Grabar_Clicked"  x:Name="audio" BackgroundColor="Red" CornerRadius="10" TextColor="White" WidthRequest="200" HeightRequest="50" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="20">
+                <Button Text="Guardar" Clicked="Guardar_Clicked" BackgroundColor="#0766AD" CornerRadius="10" TextColor="White" WidthRequest="100" HeightRequest="70" />
+               
+            </StackLayout>
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>

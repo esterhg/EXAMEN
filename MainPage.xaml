@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:ExamenMovil.Modelos"
+             x:Class="ExamenMovil.MainPage">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="15" Margin="15">
+        <Label Grid.Row="0" Text="Lista de empleados" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Start" />
+
+        <CollectionView Grid.Row="1" Grid.RowSpan="2" ItemsSource="{Binding ListaNotas}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Notas">
+                    <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*">
+                        <Image Grid.RowSpan="2"  Grid.Column="0" Source="{Binding Urlfoto}" WidthRequest="100" HeightRequest="100" Aspect="AspectFill"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Titulo}" FontAttributes="Bold" TextColor="Black" Margin="10,10,10,10" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Descripcion}" TextColor="Black" Margin="10,10,10,10"  />
+                        <Button Grid.Row="2" Grid.Column="1" Text="Reproducir Audio" Command="{Binding BindingContext.ReproducirAudioCommand, Source={x:RelativeSource AncestorType={x:Type ContentPage}}}" CommandParameter="{Binding}" BackgroundColor="#4E944F" CornerRadius="10" TextColor="White" WidthRequest="120" HeightRequest="40" Margin="10,10,10,10" />
+                        <Label Grid.Row="3" Grid.Column="1" Padding="10,15,0,5" Text="Editar" TextColor="#0766AD" Margin="10,10,0,10" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Editar_Tapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Grid.Row="3" Grid.Column="1" Padding="10,15,0,5" Text="Eliminar" TextColor="Red" HorizontalOptions="End">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Eliminar_Tapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="3" Text="Nuevo nota" Clicked="NuevaNota_Clicked" WidthRequest="200" HeightRequest="50" BackgroundColor="#0766AD" TextColor="White" />
+    </Grid>
+
+</ContentPage>
